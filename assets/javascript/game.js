@@ -7,6 +7,8 @@ var choiceMade = null;
 
 
 var possible = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+$(document).ready(function() {
+
 
 function compLetter() {
     for(i =0; i< possible.length; i++ ) {
@@ -14,10 +16,13 @@ function compLetter() {
         return computerGuess;
     }
 }
-    $("#remain").on("keypress", function() {
-        var totalGuess = String.fromCharCode(event.keyCode).toLowerCase();
-        guessesRemain--;
-        append(guessesRemain);
+    $(document).on("keypress", function(key) {
+        var totalGuess = $("<span>");
+        key = String.fromCharCode(key).toLowerCase();
+        totalGuesses.append(totalGuess.text());
+        // guessesRemain--;
+        // $(this).append(guessesRemain);
+    });
 });
     if (guessesRemain > 0){
         if (userGuess == computerGuess){
@@ -32,4 +37,3 @@ function compLetter() {
             alert("Sorry, you're not psychic, try again.");
             reset();
         }
-
